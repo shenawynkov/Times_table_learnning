@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Times table learnning</string>
+    <string name="hello">Hi can you beat me and won your prize ?!</string>
+    <string name="test_choose">Choose your test</string>
+    <string name="bt_random">Random</string>
+    <string name="bt_normal">Normal</string>
+    <string name="submit">Submit</string>
+    <string name="next">Next</string>
+    <string name="correct">Correct</string>
+    <string name="inCorrect">Incorrect</string>
+</resources>

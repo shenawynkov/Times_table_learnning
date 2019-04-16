@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#d81b60</color>
+    <color name="nileColor">#11a0b3</color>
+    <color name="seperator">#A0375272</color>
+    <color name="blue2">#1B4876</color>
+    <color name="myRed">#823946</color>
+    <color name="white_gray">#A7A1A1</color>
+</resources>
