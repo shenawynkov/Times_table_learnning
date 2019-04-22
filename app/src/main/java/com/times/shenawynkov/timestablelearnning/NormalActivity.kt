@@ -11,14 +11,14 @@ class NormalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_normal)
-       var flag=intent.getBooleanExtra("flag",true)
+       var flag=intent.getIntExtra("flag",0)
 
 
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = TimesFragment()
         var bundle=Bundle()
-        bundle.putBoolean("flag",flag)
+        bundle.putInt("flag",flag)
          fragment.arguments=bundle
         fragmentTransaction.add(R.id.fragment_container, fragment).commit()
 

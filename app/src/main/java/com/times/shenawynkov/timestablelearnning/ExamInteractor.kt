@@ -42,4 +42,25 @@ class ExamInteractor{
 
         return list
     }
+    fun get_random_exam (x :Int ):List<Answer>
+    {
+        var list=ArrayList<Answer>();
+
+
+            for (i in 1..12)
+            {
+                var answer=Answer()
+                answer.first=x
+                answer.second=Random.nextInt(1,12)
+                answer.correct_ans=answer.first*answer.second
+                list.add(answer)
+            }
+
+
+
+
+
+
+        return list
+    }
 }

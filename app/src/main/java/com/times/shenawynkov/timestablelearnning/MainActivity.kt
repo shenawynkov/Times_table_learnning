@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         btNormal.setOnClickListener {
             var intent =Intent(this,NormalActivity::class.java )
 
-            intent .putExtra("flag",true)
+            intent .putExtra("flag",0)
             intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
 
             startActivity(intent)
@@ -22,10 +22,27 @@ class MainActivity : AppCompatActivity() {
         btRandom.setOnClickListener {
             var intent =Intent(this,NormalActivity::class.java )
 
-            intent .putExtra("flag",false)
+            intent .putExtra("flag",1)
             intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
             startActivity(intent)
 
+        }
+        btRandoml2.setOnClickListener {
+
+
+            var intent =Intent(this,ChooseActivity::class.java )
+
+            intent .putExtra("type",false)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
+        }
+        bt_normal_by_times.setOnClickListener {
+
+            var intent =Intent(this,ChooseActivity::class.java )
+
+            intent .putExtra("type",true)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
         }
     }
 }

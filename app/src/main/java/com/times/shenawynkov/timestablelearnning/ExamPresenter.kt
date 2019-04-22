@@ -9,6 +9,11 @@ fun updateList( i :Int )
 {
     examView.updatList(examInteractor.get_exam(i))
 }
+    fun updateList_random( i :Int )
+    {
+        examView.updatList(examInteractor.get_random_exam(i))
+    }
+
     fun calculateResult( list: List<Answer>  )
     {
         var i=0;

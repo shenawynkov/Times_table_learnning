@@ -8,4 +8,6 @@
     <string name="next">Next</string>
     <string name="correct">Correct</string>
     <string name="inCorrect">Incorrect</string>
+    <string name="random_levels">Random by Times</string>
+    <string name="normal_by_times">Normal By Times</string>
 </resources>

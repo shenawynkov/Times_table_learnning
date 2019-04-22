@@ -23,7 +23,7 @@ class TimesFragment : Fragment(), ExamView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.frament_times, container, false)
 
-        var flag=arguments!!.getBoolean("flag")
+        var flag=arguments!!.getInt("flag")
 
 
 
@@ -37,7 +37,7 @@ class TimesFragment : Fragment(), ExamView {
 
             btNext = root.findViewById(R.id.btSubmit);
 
-            if(flag)
+            if(flag==0)
             {
                 presenter.updateList(i)
 
@@ -77,7 +77,7 @@ class TimesFragment : Fragment(), ExamView {
                 })
 
             }
-            else
+            else if(flag==1)
             { presenter.updateList(100)
                 btNext.setOnClickListener(View.OnClickListener {
                     when (btNext.text) {
@@ -110,6 +110,42 @@ class TimesFragment : Fragment(), ExamView {
 
 
                 })
+
+            }
+            else
+            {
+                presenter.updateList_random(i)
+
+                btNext.setOnClickListener(View.OnClickListener {
+                    when (btNext.text) {
+                        resources.getText(R.string.submit).toString() -> {
+
+                            viewAdapter.chVisable = true
+                            redraw()
+                            presenter.calculateResult(viewAdapter.list)
+                            btNext.text = resources.getText(R.string.next).toString()
+
+                            btNext.setBackgroundColor(resources.getColor(R.color.myRed))
+
+                        }
+                        resources.getText(R.string.next).toString() -> {
+                            viewAdapter.chVisable = false
+                            i++;
+                            btNext.text = resources.getText(R.string.submit).toString()
+                            btNext.setBackgroundColor(resources.getColor(R.color.blue2))
+                            if (i > 12) {
+                                var intent = Intent(activity, GraphActivity::class.java)
+                                intent.putExtra("result", presenter.examInteractor.results)
+
+                                startActivity(intent)
+                            } else
+
+                                presenter.updateList_random(i)
+                        }
+
+
+                    }})
+
 
             }
 
