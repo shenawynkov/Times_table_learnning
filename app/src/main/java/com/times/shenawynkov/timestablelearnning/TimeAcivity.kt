@@ -36,6 +36,7 @@ class TimeAcivity : AppCompatActivity() , ExamView{
             layoutManager = viewManager;
             adapter = viewAdapter
             setHasFixedSize(true)
+        }
             if (type)
                 presenter.updateList(i)
             else
@@ -43,33 +44,41 @@ class TimeAcivity : AppCompatActivity() , ExamView{
 
 
 
+             btNext.setOnClickListener {
+            when (btNext.text) {
+                resources.getText(R.string.submit).toString() -> {
 
-            btNext.setOnClickListener(View.OnClickListener {
-                when (btNext.text) {
-                    resources.getText(R.string.submit).toString() -> {
+                    viewAdapter.chVisable = true
+                    redraw()
+                    presenter.calculateResult(viewAdapter.list)
+                    btNext.text = resources.getText(R.string.next).toString()
 
-                        viewAdapter.chVisable = true
-                        presenter.calculateResult(viewAdapter.list)
-                        btNext.text = resources.getText(R.string.next).toString()
+                    btNext.setBackgroundColor(resources.getColor(R.color.myRed))
 
-                        btNext.setBackgroundColor(resources.getColor(R.color.myRed))
-
-
-                    }
-                    resources.getText(R.string.next).toString() -> {
-                        viewAdapter.chVisable = false
-                        btNext.text = resources.getText(R.string.submit).toString()
-                        btNext.setBackgroundColor(resources.getColor(R.color.blue2))
-
-                        var intent = Intent(applicationContext, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
-                        startActivity(intent)
-
-
-                    }
 
                 }
-            })
-        }}
+                resources.getText(R.string.next).toString() -> {
+                    viewAdapter.chVisable = false
+                    btNext.text = resources.getText(R.string.submit).toString()
+                    btNext.setBackgroundColor(resources.getColor(R.color.blue2))
+
+                    var intent=Intent(this@TimeAcivity,MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                    startActivity(intent)
+
+
+                }        }}
+    }
+
+        fun redraw()
+        {
+
+
+            recyclerView.setAdapter(null);
+            recyclerView.setLayoutManager(null);
+            recyclerView.setAdapter(viewAdapter);
+            recyclerView.setLayoutManager(viewManager);
+            viewAdapter.notifyDataSetChanged();
+        }
 }

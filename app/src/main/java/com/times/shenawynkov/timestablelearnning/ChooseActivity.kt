@@ -3,7 +3,6 @@ package com.times.shenawynkov.timestablelearnning
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 
 class ChooseActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class ChooseActivity : AppCompatActivity() {
         val asc = Array(11, { i -> i + 2 })
         val type=intent.getBooleanExtra("type",true)
         setContentView(R.layout.activity_choose)
-        viewManager = GridLayoutManager(this,3)
+        viewManager = GridLayoutManager(this,3) as RecyclerView.LayoutManager
         viewAdapter = ChooseAdapter(asc,this,type)
 
         recyclerView = findViewById<RecyclerView>(R.id.my_recycler_view).apply {

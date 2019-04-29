@@ -57,10 +57,7 @@ class MyAdapter( var context :Context,var list: List<Answer>) :
         if(chVisable==true)
         {
             holder.editText.setText(list.get(position).answer.toString(),TextView.BufferType.EDITABLE)
-            holder.editText.setFocusable(false);
             holder.editText.setEnabled(false);
-            holder.editText.setCursorVisible(false);
-            holder.editText.setKeyListener(null);
             holder.checkBox.visibility= View.VISIBLE
             if(list.get(position).answer==list.get(position).correct_ans)
             {
@@ -74,10 +71,11 @@ class MyAdapter( var context :Context,var list: List<Answer>) :
                 holder.checkBox.text=context.resources.getText(R.string.inCorrect)
             }
         }
-        else
-        {
+        else {
             holder.editText.text.clear()
-            holder.checkBox.visibility=View.INVISIBLE
+            holder.checkBox.visibility = View.INVISIBLE
+            holder.editText.setEnabled(true);
+
         }
         holder.tvExam.text = list.get(position).first.toString()+" * "+list.get(position).second.toString()+ " = ";
         holder.editText.addTextChangedListener(object:TextWatcher{

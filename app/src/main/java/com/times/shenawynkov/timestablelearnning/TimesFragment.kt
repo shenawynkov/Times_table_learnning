@@ -115,40 +115,38 @@ class TimesFragment : Fragment(), ExamView {
             else
             {
                 presenter.updateList_random(i)
-
                 btNext.setOnClickListener(View.OnClickListener {
-                    when (btNext.text) {
-                        resources.getText(R.string.submit).toString() -> {
+                when (btNext.text) {
+                    resources.getText(R.string.submit).toString() -> {
 
-                            viewAdapter.chVisable = true
-                            redraw()
-                            presenter.calculateResult(viewAdapter.list)
-                            btNext.text = resources.getText(R.string.next).toString()
+                        viewAdapter.chVisable = true
+                        redraw()
+                        presenter.calculateResult(viewAdapter.list)
+                        btNext.text = resources.getText(R.string.next).toString()
 
-                            btNext.setBackgroundColor(resources.getColor(R.color.myRed))
-
-                        }
-                        resources.getText(R.string.next).toString() -> {
-                            viewAdapter.chVisable = false
-                            i++;
-                            btNext.text = resources.getText(R.string.submit).toString()
-                            btNext.setBackgroundColor(resources.getColor(R.color.blue2))
-                            if (i > 12) {
-                                var intent = Intent(activity, GraphActivity::class.java)
-                                intent.putExtra("result", presenter.examInteractor.results)
-
-                                startActivity(intent)
-                            } else
-
-                                presenter.updateList_random(i)
-                        }
+                        btNext.setBackgroundColor(resources.getColor(R.color.myRed))
 
 
-                    }})
+                    }
+                    resources.getText(R.string.next).toString() -> {
+                        viewAdapter.chVisable = false
+                        btNext.text = resources.getText(R.string.submit).toString()
+                        btNext.setBackgroundColor(resources.getColor(R.color.blue2))
+
+                        var intent=Intent(activity,MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                        startActivity(intent)
 
 
+                    }
+
+
+                }
+
+
+            });
             }
-
 
 
 
