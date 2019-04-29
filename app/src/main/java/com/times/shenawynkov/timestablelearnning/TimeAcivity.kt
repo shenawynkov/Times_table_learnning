@@ -11,7 +11,7 @@ import android.widget.Button
 class TimeAcivity : AppCompatActivity() , ExamView{
     override fun updatList(list: List<Answer>) {
         viewAdapter.list = list
-        viewAdapter.notifyDataSetChanged()
+        recyclerView.setItemViewCacheSize(list.size);        viewAdapter.notifyDataSetChanged()
 
     }
 

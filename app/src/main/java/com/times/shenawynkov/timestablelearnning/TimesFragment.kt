@@ -35,6 +35,8 @@ class TimesFragment : Fragment(), ExamView {
             adapter = viewAdapter
             setHasFixedSize(true)
 
+        }
+
             btNext = root.findViewById(R.id.btSubmit);
 
             if(flag==0)
@@ -150,7 +152,7 @@ class TimesFragment : Fragment(), ExamView {
 
 
 
-        }
+        
 
         return root
     }
@@ -158,6 +160,8 @@ class TimesFragment : Fragment(), ExamView {
     override fun updatList(list: List<Answer>) {
 
         viewAdapter.list = list
+
+        recyclerView.setItemViewCacheSize(list.size);
         viewAdapter.notifyDataSetChanged()
 
     }
